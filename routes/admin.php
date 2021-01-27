@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth:admin'] , function() {
     // shipped controller //
     Route::group(['prefix' => 'settings'] , function() {
         Route::get('shipped-methods/{type}' , 'SettingsController@editShippingMethods')->name('edit.shipped.methods');
+        Route::put('shipped-methods/{id}' , 'SettingsController@updateShippingMethods')->name('update.shipped.methods');
     });
 });
 

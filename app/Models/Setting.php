@@ -11,7 +11,7 @@ class Setting extends Model
 
     protected $with = ['translations'];
     protected $translatedAttributes = ['value'];
-
+    public $timestamps = false;
     protected $fillable = ['key' , 'is_translatable' , 'plain_value'];
 
     protected $casts = [

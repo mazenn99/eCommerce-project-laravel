@@ -3,26 +3,40 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\ShippingsRequest;
 use App\Models\Setting;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SettingsController extends Controller
 {
     public function editShippingMethods($type ) {
-        $shippedMethod = '';
+        $shippingMethod  = '';
         switch ($type) {
             case 'free' :
-                $shippedMethod = Setting::where('key' , 'free_shipping_label')->first();
+                $shippingMethod = Setting::where('key' , 'free_shipping_label')->first();
             break;
             case 'local' :
-                $shippedMethod = Setting::where('key' , 'local_label')->first();
+                $shippingMethod = Setting::where('key' , 'local_label')->first();
             break;
             case 'outer' :
-                $shippedMethod = Setting::where('key' , 'outer_label ')->first();
+                $shippingMethod = Setting::where('key' , 'outer_label ')->first();
             break;
         }
-        return $shippedMethod;
-        return view('dashboard.settings.shippings.edit' , compact('shippedMethod '));
+        return view('dashboard.settings.shippings.edit' , compact('shippingMethod'));
+    }
 
+    public function updateShippingMethods(ShippingsRequest $request  , $id) {
+        $shipping_method = Setting::findOrFail($id);
+        try {
+            DB::beginTransaction();
+            $shipping_method -> update(['plain_value' => $request->input('plain_value')]);
+            $shipping_method -> value = $request->input('value');
+            $shipping_method->save();
+            DB::commit();
+            return redirect()->back()->with(['success' => 'successfully saved']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' , $e]);
+            DB::rollback();
+        }
     }
 }

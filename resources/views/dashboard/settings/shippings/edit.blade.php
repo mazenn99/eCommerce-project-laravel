@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('content')
-
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-header row">
@@ -9,11 +7,10 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية </a>
+                                <li class="breadcrumb-item"><a href="">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.languages')}}"> أللغات </a>
-                                </li>
-                                <li class="breadcrumb-item active">تعديل لغة
+
+                                <li class="breadcrumb-item active">وسائل التوصيل
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +24,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> إضافة لغة </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> تعديل  وسيلة توصيل </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -39,26 +36,28 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @include('admin.includes.alerts.success')
-                                @include('admin.includes.alerts.errors')
+                                @include('dashboard.includes.alerts.success')
+                                @include('dashboard.includes.alerts.error')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.languages.update',$language -> id)}}" method="POST"
+                                        <form class="form" action="{{route('update.shipped.methods',$shippingMethod -> id)}}"
+                                              method="post"
                                               enctype="multipart/form-data">
                                             @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="id" value="{{$shippingMethod -> id}}">
+
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-home"></i> بيانات  اللغة </h4>
 
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم اللغة </label>
-                                                            <input type="text"  id="name"
+                                                            <label for="projectinput1"> الاسم </label>
+                                                            <input type="text" value="{{$shippingMethod  -> value}}" id="name"
                                                                    class="form-control"
-                                                                   value="{{$language -> name}}"
-                                                                   placeholder="ادخل اسم اللغة  "
-                                                                   name="name">
-                                                            @error('name')
+                                                                   placeholder=""
+                                                                   name="value">
+                                                            @error("value")
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
@@ -66,59 +65,19 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> أختصار اللغة </label>
-                                                            <input type="text" value="{{$language -> abbr}}" id="name"
+                                                            <label for="projectinput1"> قيمه التوصيل </label>
+                                                            <input type="number" value="{{$shippingMethod -> plain_value}}" id="plain_value"
                                                                    class="form-control"
-                                                                   placeholder="ادخل أختصار اللغة  "
-                                                                   name="abbr">
-                                                            @error('abbr')
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="row">
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput2"> الاتجاة </label>
-                                                            <select name="direction" class="select2 form-control">
-                                                                <optgroup label="من فضلك أختر اتجاه اللغة ">
-                                                                    <option value="rtl" @if($language ->direction == 'rtl' ) selected @endif>من اليمين الي اليسار</option>
-                                                                    <option value="ltr" @if($language ->direction == 'ltr') selected @endif>من اليسار الي اليمين</option>
-                                                                </optgroup>
-                                                            </select>
-                                                            @error('direction')
+                                                                   placeholder="  "
+                                                                   name="plain_value">
+                                                            @error("plain_value")
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                 </div>
 
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-1">
-                                                            <input type="checkbox"  value="1" name="active"
-                                                                   id="switcheryColor4"
-                                                                   class="switchery" data-color="success"
-
-                                                                   @if($language -> active  == 1 ) checked @endif
-                                                            />
-                                                            <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة </label>
-
-                                                            @error('active')
-                                                            <span class="text-danger">{{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
-
 
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
@@ -126,7 +85,7 @@
                                                     <i class="ft-x"></i> تراجع
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i>  تحديث
+                                                    <i class="la la-check-square-o"></i> حفظ
                                                 </button>
                                             </div>
                                         </form>
@@ -141,4 +100,5 @@
         </div>
     </div>
 
-@endsection
+
+@stop
