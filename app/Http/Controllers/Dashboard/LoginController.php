@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\authAdmin;
+use App\Http\Requests\admin\authAdmin;
 
 
 class LoginController extends Controller
