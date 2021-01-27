@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\authAdmin;
 
 
-class LoginController extends Controller
+class authController extends Controller
 {
     // return login admin view
     public function login() {
@@ -20,5 +20,11 @@ class LoginController extends Controller
             return redirect()->to(route('admin.dashboard'));
         }
         return redirect()->back()->with('error' , 'invalid authentication');
+    }
+
+    // logout function for admin
+    public function logout() {
+        auth()->guard('admin')->logout();
+        return view('dashboard.auth.login')->with(['success' => trans('dashboard/general.successfully_logout')]);
     }
 }

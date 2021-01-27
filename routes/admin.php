@@ -18,12 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => 'guest:admin' , 'prefix' => 'admin'] , function() {
-   Route::get('login' , 'LoginController@login')->name('admin.login.view');
-   Route::post('login' , 'LoginController@checkLogin')->name('admin.login.check');
+   Route::get('login' , 'authController@login')->name('admin.login.view');
+   Route::post('login' , 'authController@checkLogin')->name('admin.login.check');
 });
 
 Route::group(['middleware' => 'auth:admin'] , function() {
    Route::get('admin' , 'DashboardController@index')->name('admin.dashboard');
+    // admin logout //
+    Route::post('logout' , 'authController@logout')->name('admin.logout');
     // shipped controller //
     Route::group(['prefix' => 'settings'] , function() {
         Route::get('shipped-methods/{type}' , 'SettingsController@editShippingMethods')->name('edit.shipped.methods');

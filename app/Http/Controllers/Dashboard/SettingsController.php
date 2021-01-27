@@ -33,7 +33,7 @@ class SettingsController extends Controller
             $shipping_method -> value = $request->input('value');
             $shipping_method->save();
             DB::commit();
-            return redirect()->back()->with(['success' => 'successfully saved']);
+            return redirect()->back()->with(['success' => __( 'dashboard/general.successfully_saved')]);
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' , $e]);
             DB::rollback();
