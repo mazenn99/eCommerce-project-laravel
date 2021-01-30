@@ -22,14 +22,20 @@ Route::group(['middleware' => 'guest:admin' , 'prefix' => 'admin'] , function() 
    Route::post('login' , 'authController@checkLogin')->name('admin.login.check');
 });
 
-Route::group(['middleware' => 'auth:admin'] , function() {
-   Route::get('admin' , 'DashboardController@index')->name('admin.dashboard');
+Route::group(['middleware' => 'auth:admin' , 'prefix' => 'admin'] , function() {
+   Route::get('/' , 'DashboardController@index')->name('admin.dashboard');
     // admin logout //
     Route::post('logout' , 'authController@logout')->name('admin.logout');
     // shipped controller //
     Route::group(['prefix' => 'settings'] , function() {
         Route::get('shipped-methods/{type}' , 'SettingsController@editShippingMethods')->name('edit.shipped.methods');
         Route::put('shipped-methods/{id}' , 'SettingsController@updateShippingMethods')->name('update.shipped.methods');
+    });
+    // edit profile //
+    Route::group(['prefix' => 'profile'] , function() {
+        Route::get('edit' , 'ProfileController@editProfile')->name('edit.admin.profile');
+        Route::put('edit' , 'ProfileController@updateProfile')->name('update.admin.profile');
+
     });
 });
 

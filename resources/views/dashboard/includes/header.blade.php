@@ -37,7 +37,7 @@
                             <span class="avatar avatar-online">
                   <img  style="height: 35px;" src="" alt="avatar"><i></i></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href=""><i
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('edit.admin.profile')}}"><i
                                     class="ft-user"></i> تعديل الملف الشحصي </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" onclick="event.preventDefault();document.getElementById('form-logout').submit();"><i class="ft-power"></i> تسجيل
@@ -233,6 +233,24 @@
                             <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
                                                                 href="javascript:void(0)">Read all messages</a></li>
                         </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav float-right">
+                    <li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                  <span
+                      class="user-name text-bold-700">{{app()->getLocale()}}</span>
+                </span>
+
+                        </a>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+                        <div class="dropdown-menu dropdown-menu-right"><a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="dropdown-item" href="">
+                                {{ $properties['native'] }}
+                            </a>
+
+                            @endforeach
+                        </div>
                     </li>
                 </ul>
             </div>

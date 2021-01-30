@@ -24,7 +24,7 @@ class authController extends Controller
 
     // logout function for admin
     public function logout() {
-        auth()->guard('admin')->logout();
-        return view('dashboard.auth.login')->with(['success' => trans('dashboard/general.successfully_logout')]);
+        auth('admin')->logout();
+        return redirect()->to(route('admin.login.view'));
     }
 }

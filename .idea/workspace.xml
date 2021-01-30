@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e7a0e20d-82be-490c-b8c5-92a5ded92396" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/authController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helper/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helper/general.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/authController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/authController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/includes/alerts/success.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/includes/alerts/success.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/includes/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
@@ -136,17 +138,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en/dashboard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en/dashboard/auth" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\eCommerce-Laravel\resources\lang\en\dashboard\auth" />
       <recent name="C:\xampp\htdocs\eCommerce-Laravel\resources\lang\en\dashboard" />
       <recent name="C:\xampp\htdocs\eCommerce-Laravel\resources\lang\en" />
       <recent name="C:\xampp\htdocs\eCommerce-Laravel\resources\lang\ar" />
       <recent name="C:\xampp\htdocs\eCommerce-Laravel\resources\views\site" />
-      <recent name="C:\xampp\htdocs\eCommerce-Laravel\routes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\eCommerce-Laravel\app\Http\Requests\admin" />
@@ -177,7 +179,10 @@
       <workItem from="1611656500089" duration="8245000" />
       <workItem from="1611685700719" duration="2843000" />
       <workItem from="1611719213183" duration="6286000" />
-      <workItem from="1611768182910" duration="4451000" />
+      <workItem from="1611768182910" duration="5093000" />
+      <workItem from="1611856396296" duration="10167000" />
+      <workItem from="1611928251681" duration="5204000" />
+      <workItem from="1611943201982" duration="9239000" />
     </task>
     <servers />
   </component>
